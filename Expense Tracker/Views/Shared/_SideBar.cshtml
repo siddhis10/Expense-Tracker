@@ -1,5 +1,33 @@
-﻿
+﻿@{
+    List<Object> menuitems = new List<Object>();
+    menuitems.Add(new
+    {
+        text = "DashBoard",
+        url = "/Dashboard",
+        iconCss = "fa-solid fa-box"
+    });
 
-<ejs-sidebar id="Sidebar" width="290px"> 
+    menuitems.Add(new
+    {
+        text = "Categories",
+        url = "/Categories",
+        iconCss = "fa-solid fa-folder-closed"
+    });
 
+    menuitems.Add(new
+    {
+        text = "Transaction",
+        url = "/Transaction",
+        iconCss = "fa-solid fa-arrow-right-arrow-left"
+    });
+}
+
+<ejs-sidebar id="sidebar" width="290px">
+    <e-content-template>
+        <div class="profile-wrapper">
+            <img class="profile-pic" src=""/>
+        </div>
+        <ejs-menu id="menu" items="menuitems" orientation="Vertical" hamburgerMode></ejs-menu>
+    </e-content-template>
 </ejs-sidebar>
+

@@ -14,7 +14,7 @@ namespace Expense_Tracker.Models
         public int Amount { get; set; }
         public string? Note { get; set; }
 
-        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [NotMapped]
         public string? CategoryTitleWithIcon
