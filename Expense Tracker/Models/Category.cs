@@ -16,5 +16,13 @@ namespace Expense_Tracker.Models
 
         [Column(TypeName = "nvarchar(50)")]
         public string Type { get; set; }
+
+        [NotMapped]
+        public string? CategorywithIcon {
+            get
+            {
+                return this.Icon+" "+this.Title;
+            }
+        }
     }
 }

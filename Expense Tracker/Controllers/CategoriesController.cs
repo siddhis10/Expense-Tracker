@@ -6,157 +6,96 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expense_Tracker.Models;
+using Expense_Tracker.Models.ViewModels;
 
 namespace Expense_Tracker.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext context;
 
         public CategoriesController(ApplicationDbContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
-        // GET: Categories
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Categories != null ? 
-                          View(await _context.Categories.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
+            var data = context.Categories.ToList();
+            ViewBag.datasource = data;
+            return View(data);
         }
 
-        // GET: Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
+
+
+        public IActionResult Create(int? id)
         {
-            if (id == null || _context.Categories == null)
+            CategoriesVM CategoriesVM = GetDropdown();
+            if (id == 0 || id == null)
             {
-                return NotFound();
+                return View(CategoriesVM);
             }
-
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
+            else
             {
-                return NotFound();
-            }
-
-            return View(category);
-        }
-
-        // GET: Categories/Create
-        public IActionResult Create()
-        {
-            return View(new Category());
-        }
-
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,Title,Icon,Type")] Category category)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
-
-        // GET: Categories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Title,Icon,Type")] Category category)
-        {
-            if (id != category.CategoryId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.CategoryId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
-
-        // GET: Categories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }
-
-        // POST: Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Categories == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
-            }
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
-            {
-                _context.Categories.Remove(category);
+                CategoriesVM.Category = context.Categories.FirstOrDefault(x => x.CategoryId == id);
+                return View(CategoriesVM);
             }
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
         }
 
-        private bool CategoryExists(int id)
+
+        public CategoriesVM GetDropdown()
         {
-          return (_context.Categories?.Any(e => e.CategoryId == id)).GetValueOrDefault();
+            CategoriesVM CategoriesVM = new()
+            {
+                Category = new(),
+                
+
+            };
+            return CategoriesVM;
         }
+
+
+
+        [HttpPost]
+        public IActionResult Create(CategoriesVM obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if (obj.Category.CategoryId == 0)
+                {
+                    context.Categories.Add(obj.Category);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    context.Update(obj.Category);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            //var Departmentd = GetDropdown();
+            //obj.DepartmentList = Departmentd.DepartmentList;
+            return View(obj);
+        }
+
+
+        [HttpPost]
+        public IActionResult Delete(int? id)
+        {
+            var obj = context.Categories.FirstOrDefault(x => x.CategoryId == id);
+            if (obj != null)
+            {
+                context.Categories.Remove(obj);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View(obj);
+        }
+
     }
 }

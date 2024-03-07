@@ -1,0 +1,52 @@
+﻿@model Expense_Tracker.Models.Transaction
+
+@{
+    ViewData["PageTitle"] = Model.TransactionId==0 ? "Create a New Transaction":"Edit Transaction";
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5 " style="background-color:#212b36">
+            <form asp-controller="Transaction" asp-action="Upsert" method="post">
+                <input asp-for="TransactionId" hidden />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <ejs-datepicker id="datepicker" ejs-for="CreatedAt" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id=CategoryId  dataSource="@ViewBag.Category" allowFiltering="true" ignoreAccent="true" filterType="Contains" ejs-for="CategoryId" floatLabelType="Always" placeholder="Category">
+                        <e-dropdownlist-fields value="CategoryId" text="CategorywithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                </div>
+
+              
+                <div class="mb-3">
+                   
+                    <ejs-numerictextbox min="0"  id="Amounts" currency="INR" ejs-for="Amount" floatLabelType="Always" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger" ></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="Note" placeholder="Note" multiline="true" ejs-for="Note" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    <a asp-controller="Categories" asp-action="Index" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+            <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
