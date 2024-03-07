@@ -162,8 +162,7 @@ body {
 }
 
 #sidebar {
-    background-color: rgba(68, 84, 195, 0.8);
-    
+    background-color: #1a222b;
     border-right: 1px dashed rgba(75,82,85,0.24);
     padding: 10px 20px;
     overflow: hidden;
@@ -246,7 +245,7 @@ body {
 
         #menu .e-menu-item a {
             width: 100%;
-            color: darkblue;
+            color: #1a222b;
             font-weight: 300;
             padding: 7px 5px;
             box-sizing: border-box;
@@ -257,7 +256,7 @@ body {
     }
 
     #menu .e-menu-item .e-anchor-wrap span.e-menu-icon {
-        color: rgb(171, 163, 152);
+        color: #1a222b;
     }
 
     #menu .e-menu-item.e-separator {
