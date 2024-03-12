@@ -1,0 +1,101 @@
+﻿@model Expense_Tracker.ViewModels.UserVM
+<link href="~/css/logsign.css" rel="stylesheet" />
+
+<div class="row justify-content-center">
+    <div class="col-md-8 ">
+
+        <div class="card" >
+            <div class="card-header">
+                <div class="card-title">
+                    <h2 class="card-text text-center text-white">Sign Up</h2>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post" asp-controller="Login" asp-action="SignUp">
+                    
+                    <div class="row g-gs">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Name</b></label><span>*</span>
+                                <input asp-for="TblUser.Name" class="form-control" />
+
+                                <span asp-validation-for="TblUser.Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Username</b></label><span>*</span>
+                                <input asp-for="TblUser.Username" class="form-control" />
+                                <span asp-validation-for="TblUser.Username" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row g-gs">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Email</b></label><span>*</span>
+                                <input asp-for="TblUser.Email" class="form-control" />
+                                <span asp-validation-for="TblUser.Email" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Phone No</b></label><span>*</span>
+                                <input asp-for="TblUser.ContactNo" onblur="CheckPhoneLength(this)" type="number" class="form-control" />
+                                <span asp-validation-for="TblUser.ContactNo" id="Phone" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row g-gs">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Password</b></label><span>*</span>
+                                <input asp-for="TblUser.Password" type="password" class="form-control" />
+                                <span asp-validation-for="TblUser.Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label"><b>Confirmed Password</b></label><span>*</span>
+                                <input asp-for="TblUser.ConfirmPassword" type="password" class="form-control" />
+                                <span asp-validation-for="TblUser.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <div class="card-footer text-end">
+                        <button class="btn btn-success" type="submit" >Save</button>
+                        <a asp-controller="Login" asp-action="SignUp" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function CheckPhoneLength(Phone) {
+        debugger;
+        if(Phone.value.length >15 || Phone.value.length<10)
+        {
+            $("#Phone").text("Phone Number should be between 10 to 15");
+        }
+        else {
+            $("#Phone").text("");
+        }
+    }
+
+</script>

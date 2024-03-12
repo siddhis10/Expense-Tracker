@@ -1,0 +1,50 @@
+﻿@model Expense_Tracker.Models.TblUser
+<link href="~/css/logsign.css" rel="stylesheet" />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        @if (ViewBag.User != null)
+        {
+            <p style="color:red">@ViewBag.User</p>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <p style="color:green">@TempData["Success"]</p>
+        }
+        <div class="card c">
+            <div class="card-header text-xl-center">
+                <h2 class="text-white">Login Form</h2>
+            </div>
+
+            <div class="card-body">
+                <form asp-controller="Login" asp-action="Index" method="post">
+                    <div class="form-group">
+                        <label class="form-label"><b>Username</b></label>
+                        <input type="text" asp-for="Username" placeholder="Enter username" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label class="form-label"><b>Password</b></label>
+                        <input type="password" placeholder="Enter password" asp-for="Password" class="form-control" />
+                    </div>
+                    <br />
+
+                    <div class="card-footer  ">
+                        <div>
+                            <text class="text-white">Don't have account?<a asp-controller="Login" asp-action="Signup" class=" text-success">Signup</a></text>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-success" type="submit">Login</button>
+                            <a asp-controller="Login" asp-action="Index" class="btn btn-danger">Cancel</a>
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>

@@ -3,11 +3,11 @@
 @{
     ViewData["PageTitle"] = Model.TransactionId==0 ? "Create a New Transaction":"Edit Transaction";
 }
-
+<link href="~/css/style.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-7">
-        <div class="widget p-5 " style="background-color:#212b36">
+        <div class="widget p-5 " style="background-color:#333">
             <form asp-controller="Transaction" asp-action="Upsert" method="post">
                 <input asp-for="TransactionId" hidden />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="col-md-5">
-        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#333">
             <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
         </div>
     </div>
@@ -50,3 +50,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<partial name="~/Views/Shared/_SideBar.cshtml" />

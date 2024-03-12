@@ -1,0 +1,202 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: floralwhite;
+    color: black;
+}
+
+.e-bigger {
+    font-size: x-large;
+}
+/*Redio Button*/
+.e-btn-group.custom-rbt-group {
+    width: 100%;
+}
+
+    .e-btn-group.custom-rbt-group .e-btn {
+        width: 50%;
+    }
+
+.custom-rbt-group label.e-btn {
+    box-shadow: none !important;
+    border: 1px solid #fff;
+    background-color: rgb(34 43 51);
+    color: #fff;
+}
+
+.e-btn-group.custom-rbt-group input:checked + label.e-btn {
+    background-color: #fff;
+    color: #212b36;
+    border: 1px solid #fff;
+}
+
+/*Widget*/
+.widget {
+    border-radius: 1rem;
+    background-color: #333;
+}
+
+    .widget.summary > div:first-child {
+        background-color: #333;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+        .widget.summary > div:first-child i {
+            font-weight: bold;
+        }
+
+    .widget.income > div:first-child {
+        color: #65da41;
+    }
+
+    .widget.expense > div:first-child {
+        color: #ff4e48;
+    }
+
+    .widget.balance > div:first-child {
+        color: #2aa1ff;
+    }
+
+    .widget.chart {
+        background-color: #333;
+        padding: 5px;
+    }
+
+/*Grid*/
+
+.e-grid {
+    border: 0;
+    border-radius: 5px;
+}
+
+    .e-grid .e-gridcontent, .e-grid .e-table {
+        background-color: #333;
+    }
+
+    .e-grid .e-gridheader {
+        border: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 10px;
+        background-color: #333;
+    }
+
+        .e-grid .e-gridheader .e-headercell {
+            background-color: #333;
+        }
+
+    .e-grid .e-gridpager {
+        background-color: #333;
+    }
+
+    .e-grid .e-pagercontainer {
+        border: none;
+        background-color: #333;
+    }
+
+    .e-grid .e-content table {
+        padding: 0px 10px;
+    }
+
+.e-pagercontainer .e-icons {
+    background-color: white;
+    border: none !important;
+}
+
+.e-pager .e-numericitem {
+    color: #adb5bd;
+    background-color: #333;
+    padding: 15px !important;
+}
+
+    .e-pager .e-numericitem:not(.e-currentitem) {
+        border: none !important;
+    }
+
+    .e-pager .e-numericitem:hover {
+        color: #fff;
+    }
+
+    .e-pager .e-numericitem.e-currentitem {
+        color: #fff;
+        border: none !important;
+        background-color: #31373d;
+    }
+
+.e-pager div.e-icons:not(.e-disable) {
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.e-grid .e-pager {
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/*Breadcrumb*/
+.e-breadcrumb a, .e-breadcrunb a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.main-content {
+    margin-left: 290px;
+}
+
+/* Sidebar container */
+#sidebar {
+    background-color: #333; /* Change the background color */
+    color: #fff; /* Change the text color */
+    padding: 20px; /* Add padding */
+}
+
+/* Profile picture */
+/*.profile-pic {
+    width: 100px;*/ /* Adjust the width */
+/*height: 100px;*/ /* Adjust the height */
+/*border-radius: 50%;*/ /* Make it round */
+/*margin-bottom: 20px;*/ /* Add some space below */
+/*}*/
+
+/* Menu items */
+#menu {
+    padding: 0; /* Remove default padding */
+    list-style-type: none; /* Remove bullets */
+    background-color:floralwhite;
+    
+}
+
+    /* Menu item */
+    #menu li {
+        margin-bottom: 10px; /* Add some space between items */
+    }
+
+        /* Menu item text */
+        #menu li a {
+            color: #31373d; /* Change the text color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Menu item icon */
+        #menu li .icon {
+            color: #31373d;
+            margin-right: 10px; /* Add space between icon and text */
+        }

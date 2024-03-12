@@ -10,5 +10,6 @@ namespace Expense_Tracker.Models
         public DbSet<Category>Categories{get;set;}
 
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TblUser> TblUsers { get; set; }
     }
 }

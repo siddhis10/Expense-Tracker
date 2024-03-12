@@ -16,7 +16,7 @@ namespace Expense_Tracker.Controllers
         public async Task<ActionResult> Index()
         {
 
-            DateTime StartDate= DateTime.Today.AddDays(-6);
+            DateTime StartDate= DateTime.Today.AddDays(-10);
             DateTime EndDate = DateTime.Today;
 
             List<Transaction> SelectTransaction= await context.Transactions

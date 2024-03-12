@@ -3,12 +3,12 @@
 @{
     ViewData["PageTitle"]= Model.Category.CategoryId == 0 ? "Create a new Category" : "Edit a Category";
 }
-
+<link href="~/css/style.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-7">
 
-        <div class="widget p-5">
+        <div class="widget p-5 " style="background-color:#333">
             <form asp-controller="Categories" asp-action="Create" method="post">
             <input asp-for="Category.CategoryId" hidden />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -43,7 +43,7 @@
 
     </div>
     <div class="col-md-5">
-        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#333">
             <i class="fas fa-shapes fa-2x text-light"></i>
         </div>
     </div>
@@ -54,3 +54,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<partial name="~/Views/Shared/_SideBar.cshtml" />

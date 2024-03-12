@@ -4,7 +4,7 @@
     ViewData["PageActionUrl"] = "/Transaction/Upsert";
     ViewData["PageActionText"] = "+New Transaction";
 }
-
+<link href="~/css/style.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-7">
         <ejs-grid id="Transaction" dataSource="@Model" gridLines="None" allowSorting="true" allowPaging="true">
@@ -19,7 +19,7 @@
 
     </div>
     <div class="col-md-5">
-        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#333">
             <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
         </div>
     </div>
@@ -39,3 +39,4 @@
         </form>
     </div>
 </script>
+<partial name="~/Views/Shared/_SideBar.cshtml" />

@@ -2,7 +2,10 @@
     ViewData["isDashBoard"] = true;
 }
 
+
+<link href="~/css/style.css" rel="stylesheet" />
 <div class="row mb-4">
+    <h1 style="color:forestgreen">@ViewBag.Mysession</h1>
     <div class="col-md-4" style="color:whitesmoke">
         <div class="d-flex flex-row widget summery income ">
             <div class="d-flex flex-column justify-content-center p-5">
@@ -69,9 +72,9 @@
             <div class="p-4">
                 <h5 class="fw-bold" style="color:whitesmoke">Income vs Expense</h5>
             </div>
-            <ejs-chart id="spline-chart" background="#1a222b"
+            <ejs-chart id="spline-chart" background="#333"
                        palettes=@(new string[]{"#54ffa9","#ffe91a"})>
-                <e-chart-primaryxaxis valueType="Category">
+                <e-chart-primaryxaxis valueType="Category" >
                     <e-majorgridlines width="0"></e-majorgridlines>
                     <e-majorticklines width="0"></e-majorticklines>
                 </e-chart-primaryxaxis>
@@ -84,9 +87,9 @@
                     <e-chartarea-border width="0"></e-chartarea-border>
                 </e-chart-chartarea>
                 <e-series-collection>
-                    <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+                    <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="4"  
                               yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
-                    <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+                    <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="4"
                               yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
                 </e-series-collection>
                 <e-chart-legendsettings position="Top" alignment="Far" toggleVisibility="false">
@@ -96,3 +99,4 @@
             </ejs-chart>
         </div>
 </div>
+    <partial name="~/Views/Shared/_SideBar.cshtml" />

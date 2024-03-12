@@ -1,0 +1,29 @@
+﻿html {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: whitesmoke;
+    color: black;
+}
+.card {
+    background: linear-gradient(to right, #008080, #00CED1);
+}
+    .card.c {
+        width: 600px; /* Set the width */
+        height: 500px; /* Set the height */
+        background: linear-gradient(to right, #483D8B, #800080);
+        /* Other card styles */
+    }
